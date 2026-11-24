@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { StyleSheet, KeyboardAvoidingView, Platform, ScrollView, Text, View, TextInput, TouchableOpacity, Alert } from "react-native";
+import { StyleSheet, KeyboardAvoidingView, Platform, ScrollView, Text, View, TextInput, TouchableOpacity, Alert, ActivityIndicator } from "react-native";
 import Feather from '@react-native-vector-icons/feather';
 import Logo from '../../components/Logo';
 
@@ -13,6 +13,7 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [mostrarSenha, setMostrarSenha] = useState(false);
+
   const [loading, setLoading] = useState(false);
 
   const [pressionadoCadastro, setPressionadoCadastro] = useState(false);
@@ -93,11 +94,13 @@ export default function Login() {
           </TouchableOpacity>
 
           <TouchableOpacity 
-          style={[styles.botao, loading && { opacity: 0.7 }]} 
-          onPress={handleLogin}
-          disabled={loading}
-          >
-            <Text style={styles.textoBotao}>{loading ? "Entrando..." : "Entrar"}</Text>
+            style={styles.botao}
+            onPress={handleLogin}
+            disabled={loading}
+          > 
+            { loading
+            ? <ActivityIndicator color="#FFF" />
+            : <Text style={styles.textoBotao}>Entrar</Text>}
           </TouchableOpacity>
 
           <View style={styles.cadastroContainer}>
@@ -129,6 +132,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     paddingHorizontal: 30,
     paddingTop: 60,
+    marginTop: 70,
     alignItems: 'center'
   },
   titulo: {

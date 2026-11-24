@@ -72,15 +72,15 @@ export default function Pedidos({ route, navigation }) {
     >
       <View style={styles.headerTitleContainer}>
         <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-          <Text style={styles.backArrow}>{"<"}</Text>
+          <Text style={styles.backArrow}>{"←"}</Text>
         </TouchableOpacity>
         <Text style={styles.pageTitle}>
-          Pedidos de {clienteNome || 'João Victor'}
+          Pedidos de {clienteNome}
         </Text>
       </View>
 
       <Text style={styles.contactSubtitle}>
-        Contato: {clienteEmail || 'joaovictor@gmail.com'}
+        Contato: {clienteEmail}
       </Text>
 
       <View style={styles.mainCard}>
@@ -344,120 +344,3 @@ const styles = StyleSheet.create({
   },
 });
 
-//import React from 'react';
-//import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-//import { SafeAreaView } from 'react-native-safe-area-context';
-//import { Ionicons } from '@expo/vector-icons';
-//import { useNavigation } from '@react-navigation/native';
-
-//export default function Pedidos() {
-  //const navigation = useNavigation();
-
-  //return (
-    //<SafeAreaView style={styles.safeArea}>
-      //<View style={styles.container}>
-        
-        {/* Título da Tela */}
-        //<View style={styles.boxTitle}>
-          //<Text style={styles.title}>Pedidos</Text>
-        //</View>
-
-        //{/* Bloco Cinza Externo */}
-        //<View style={styles.containerBox}>
-          //<View style={styles.cardBranco}>
-            //<Ionicons name='cart-outline' style={styles.icon} />
-            
-            //<Text style={styles.text}>Nenhum pedido ainda</Text>
-            //<Text style={styles.subText}>Que tal dar uma olhada no nosso menu de bolos?</Text>
-
-            //<TouchableOpacity 
-              //style={styles.button}
-              //onPress={() => navigation.navigate('Produtos')}
-            //>
-              //<Text style={styles.buttonText}>Ver o menu</Text>
-            //</TouchableOpacity>
-          //</View>
-        //</View>
-
-      //</View>
-    //</SafeAreaView>
-  //);
-//}
-
-//const styles = StyleSheet.create({
-  // safeArea: {
-  //   flex: 1,
-  //   backgroundColor: '#F7F5EE',
-  // },
-  // container: {
-  //   flex: 1,
-  //   paddingHorizontal: 20,
-  //   paddingTop: 10,
-  // },
-  // boxTitle: {
-  //   width: '100%',
-  //   marginBottom: 20,
-  //   paddingHorizontal: 10,
-  // },
-  // title: {
-  //   fontSize: 32,
-  //   fontFamily: 'StoryScript',
-  //   color: '#333333',
-  // },
-  // containerBox: {
-  //   width: '100%',
-  //   alignItems: 'center',
-  //   backgroundColor: '#EAE6DD',
-  //   borderRadius: 24,
-  //   paddingVertical: 30,
-  //   paddingHorizontal: 15,
-  // },
-  // cardBranco: {
-  //   width: '90%',
-  //   backgroundColor: '#FFFFFF',
-  //   borderRadius: 20,
-  //   paddingVertical: 35,
-  //   paddingHorizontal: 20,
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
-  //   shadowColor: '#000',
-  //   shadowOffset: { width: 0, height: 2 },
-  //   shadowOpacity: 0.1,
-  //   shadowRadius: 4,
-  //   elevation: 3,
-  // },
-  // icon: {
-  //   color: '#6D76A6',
-  //   fontSize: 45,
-  //   marginBottom: 12,
-  // },
-  // text: {
-  //   fontFamily: 'StoryScript',
-  //   fontSize: 28,
-  //   textAlign: 'center',
-  //   color: '#333333',
-  //   marginBottom: 8,
-  // },
-  // subText: {
-  //   fontSize: 15,
-  //   fontFamily: 'StoryScript',
-  //   color: '#666666',
-  //   textAlign: 'center',
-  //   marginBottom: 25,
-  // },
-  // button: {
-  //   borderWidth: 1.5,
-  //   borderRadius: 12,
-  //   width: 150,
-  //   height: 42,
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
-  //   borderColor: '#6D76A6',
-  // },
-  // buttonText: {
-  //   fontSize: 16,
-  //   fontFamily: 'StoryScript',
-  //   color: '#6D76A6',
-  // },
-//});
- 

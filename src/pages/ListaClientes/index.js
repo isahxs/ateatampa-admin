@@ -15,7 +15,9 @@ export default function ListaClientes({ navigation }) {
 
     useEffect(() => {
 
-        const clientesRef = collection(db, "usuarios");
+        const clientesRef = collection(db, "usuarios"); 
+        //collection 'usuarios' criada pedidos fictícios para visualizar na tela, 
+        //no banco a collection foi alterada para o cadastro dos clientes
 
         const unsubscribe = onSnapshot(clientesRef, (snapshot) => {
             const listaTemporaria = [];

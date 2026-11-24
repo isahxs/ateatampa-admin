@@ -9,12 +9,7 @@ import Logo from '../Logo';
 import { auth } from '../../services/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 
-export default function Header({
-    navigation,
-    route,
-    options,
-    navigationMode = 'drawer'
-}) {
+export default function Header({ navigation, route, options, navigationMode = 'drawer' }) {
 
     const insets = useSafeAreaInsets();
     const [usuarioLogado, setUsuarioLogado] = useState(null);

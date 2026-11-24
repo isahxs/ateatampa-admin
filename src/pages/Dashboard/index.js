@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { View, Text, TouchableOpacity, StyleSheet, TextInput, Image, Alert, ScrollView } from 'react-native';
@@ -7,8 +7,9 @@ import * as ImagePicker from 'expo-image-picker';
 
 import Feather from '@react-native-vector-icons/feather';
 
-import { collection, addDoc } from 'firebase/firestore';
-import { db } from '../../services/firebase';
+import { doc, getDoc, collection, addDoc } from 'firebase/firestore';
+import { onAuthStateChanged } from 'firebase/auth';
+import { db, auth } from '../../services/firebase';
 
 export default function Dashboard() {
 
@@ -20,6 +21,25 @@ export default function Dashboard() {
   const [nome, setNome] = useState('');
   const [preco, setPreco] = useState('');
   const [descricao, setDescricao] = useState('');
+
+  const [nomeAdmin, setNomeAdmin] = useState('');
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (!user) return;
+
+      try {
+        const snap = await getDoc(doc(db, 'adm', user.uid));
+        if (snap.exists()) {
+          setNomeAdmin(snap.data().nome);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    });
+
+    return unsubscribe;
+  }, []);
 
   const handleRegister = async () => {
     if (!nome || !preco || !descricao) {
@@ -83,7 +103,7 @@ export default function Dashboard() {
 
         <View style={styles.header}>
           <Text style={styles.welcome}>
-            Bem vindo(a)
+            Bem vindo(a), {nomeAdmin}
           </Text>
         </View>
 
@@ -280,7 +300,7 @@ const styles = StyleSheet.create({
     height: 110,
     borderWidth: 2,
     borderStyle: 'dashed',
-    borderColor: '#7895B2',
+    borderColor: '#494C8C',
     borderRadius: 8,
     justifyContent: 'center',
     alignItems: 'center',

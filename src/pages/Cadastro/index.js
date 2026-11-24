@@ -25,13 +25,14 @@ export default function Cadastro() {
   const [loading, setLoading] = useState(false);
  
   const handleCadastro = async () => {
-    if (!nome || !email || !confirmarSenha) {
+    if (!nome || !email || !senha || !confirmarSenha) {
       Alert.alert("Atenção", "Por favor, preencha todos os campos.");
       return;
     }
 
     if (senha !== confirmarSenha) {
-      Alert.alert("Erro", "As senhas não coincidem")
+      Alert.alert("Erro", "As senhas não coincidem");
+      return;
     }
 
     setLoading(true);

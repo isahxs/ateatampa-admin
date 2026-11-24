@@ -7,9 +7,7 @@ import { products } from '../../mocks/products';
 
 import Card from '../../components/Card';
 
-export default function Produtos({
-    navigation
-}) {
+export default function Produtos({ navigation }) {
 
     const insets = useSafeAreaInsets();
 
